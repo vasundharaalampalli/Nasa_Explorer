@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🚀 NASA Explorer
 
 Explore NASA's space APIs: APOD, Mars Rover, and Earth Imagery (EPIC) — powered by React + Express.
