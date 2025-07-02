@@ -7,12 +7,12 @@ const EPICContent = () => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const fetchEPIC = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/epic`);
+      const res = await axios.get(`${backendUrl}/api/epic`);
       setImages(res.data.slice(0, 6)); 
     } catch (err) {
       setError('Failed to fetch EPIC images.');

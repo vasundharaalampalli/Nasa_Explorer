@@ -18,7 +18,7 @@ const MarsContent = () => {
     const formattedDate = selectedDate.toISOString().split('T')[0];
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/api/mars?rover=curiosity&date=${formattedDate}`
+        `${backendUrl}/api/mars?rover=curiosity&date=${formattedDate}`
       );
       if (res.data.photos && res.data.photos.length > 0) {
         setPhotos(res.data.photos);
