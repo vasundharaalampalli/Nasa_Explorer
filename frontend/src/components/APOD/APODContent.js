@@ -5,12 +5,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '../LoadingSpinner';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://nasa-explorer-012v.onrender.com';
+
 const APODContent = () => {
   const [apod, setApod] = useState(null);
   const [error, setError] = useState('');
   const [date, setDate] = useState(new Date());
   const [loading, setLoading] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);  
+
+
 
   const fetchAPOD = async (selectedDate) => {
     if (selectedDate > new Date()) {
@@ -21,7 +25,7 @@ const APODContent = () => {
 
     setLoading(true);
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/apod`, {
+      const res = await axios.get(`$${backendUrl}/api/apod`, {
         params: { date: selectedDate.toISOString().split('T')[0] },
       });
       setApod(res.data);

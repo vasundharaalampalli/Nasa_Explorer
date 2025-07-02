@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://nasa-explorer-012v.onrender.com';
+
 const EPICContent = () => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
+  
   const fetchEPIC = async () => {
     setLoading(true);
     setError('');

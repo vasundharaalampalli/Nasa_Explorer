@@ -3,12 +3,13 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL || 'https://nasa-explorer-012v.onrender.com';
+
 const MarsContent = () => {
   const [date, setDate] = useState(new Date('2022-12-01'));
   const [photos, setPhotos] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
   const fetchPhotos = async (selectedDate) => {
     setLoading(true);
     setError('');
