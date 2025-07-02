@@ -25,7 +25,7 @@ const APODContent = () => {
 
     setLoading(true);
     try {
-      const res = await axios.get(`$${backendUrl}/api/apod`, {
+      const res = await axios.get(`${backendUrl}/api/apod`, {
         params: { date: selectedDate.toISOString().split('T')[0] },
       });
       setApod(res.data);
