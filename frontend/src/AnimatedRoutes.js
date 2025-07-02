@@ -3,6 +3,8 @@ import { AnimatePresence } from 'framer-motion';
 import APODContent from './components/APOD/APODContent';
 import MarsRover from './pages/MarsRover';
 import EPIC from './pages/EPIC';
+import MarsContent from './components/MarsContent';
+import EPICContent from './components/EPICContent';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
