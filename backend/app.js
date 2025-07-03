@@ -15,15 +15,18 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+
+//  Update allowed origins to include current deployed frontend
 const allowedOrigins = [
   'http://localhost:3000',
   'https://nasa-explorer-012v.onrender.com',
-  'https://nasa-explorer-2x30xlyra-vasundharas-projects-0cb045e4.vercel.app' // <== your Vercel frontend
+  'https://nasa-explorer-l6uobwo4s-vasundharas-projects-0cb045e4.vercel.app' // ✅ <-- Replace with your current frontend
 ];
 
+//  CORS configuration
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
       callback(null, true);
     } else {
       callback(new Error('CORS not allowed from this origin: ' + origin));
@@ -32,18 +35,17 @@ app.use(cors({
   credentials: true,
 }));
 
-
-// Routes
+// API Routes
 app.use('/api/apod', apodRoutes);
 app.use('/api/mars', marsRoutes);
 app.use('/api/epic', epicRoutes);
 
-// Root route for testing
+// Root Route
 app.get('/', (req, res) => {
   res.send('NASA Explorer backend is running.');
 });
 
-// Start server
+// Start Server
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
