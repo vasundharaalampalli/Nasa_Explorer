@@ -39,17 +39,6 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             >
               EPIC
             </NavLink>
-            {/* Add this new NavLink for Data Visualization */}
-            <NavLink 
-              to="/visualization" 
-              className={({isActive}) => 
-                `text-white px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive ? 'bg-indigo-700 dark:bg-gray-700' : 'hover:bg-indigo-800 dark:hover:bg-gray-700'
-                }`
-              }
-            >
-              Data Viz
-            </NavLink>
           </div>
           <button
             onClick={() => setDarkMode(!darkMode)}

@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
 import Navbar from './components/Layout/Navbar';
 import AnimatedRoutes from './AnimatedRoutes';
+import MarsPhotoChart from './components/MarsPhotoChart'; 
 
 const SpaceParticles = () => {
   const mountRef = useRef(null);
@@ -11,11 +12,8 @@ const SpaceParticles = () => {
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
-      alpha: true,
-      antialias: true
-    });
-    
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
     mountRef.current.appendChild(renderer.domElement);
@@ -23,21 +21,21 @@ const SpaceParticles = () => {
     const particlesGeometry = new THREE.BufferGeometry();
     const particleCount = 1500;
     const posArray = new Float32Array(particleCount * 3);
-    
-    for(let i = 0; i < particleCount * 3; i++) {
+
+    for (let i = 0; i < particleCount * 3; i++) {
       posArray[i] = (Math.random() - 0.5) * 10;
     }
-    
+
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    
+
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.025,
       color: 0xffffff,
       transparent: true,
       opacity: 0.8,
-      blending: THREE.AdditiveBlending
+      blending: THREE.AdditiveBlending,
     });
-    
+
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
     camera.position.z = 3;
@@ -48,7 +46,7 @@ const SpaceParticles = () => {
       particlesMesh.rotation.y += 0.0002;
       renderer.render(scene, camera);
     };
-    
+
     animate();
 
     const handleResize = () => {
@@ -56,7 +54,7 @@ const SpaceParticles = () => {
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
-    
+
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -71,8 +69,8 @@ const SpaceParticles = () => {
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('darkMode') === 'true' || 
-             window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return localStorage.getItem('darkMode') === 'true' ||
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
     return false;
   });
@@ -89,6 +87,7 @@ const App = () => {
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
         <main className="relative z-10">
           <AnimatedRoutes />
+          {/* <MarsPhotoChart /> */}
         </main>
       </div>
     </Router>

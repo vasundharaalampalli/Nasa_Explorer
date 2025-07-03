@@ -5,7 +5,7 @@ import MarsRover from './pages/MarsRover';
 import EPIC from './pages/EPIC';
 import MarsContent from './components/MarsContent';
 import EPICContent from './components/EPICContent';
-import DataVisualization from './components/DataVisualization';
+import MarsPhotoChart from './components/MarsPhotoChart';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<APODContent />} />
         <Route path="/mars" element={<MarsRover />} />
         <Route path="/epic" element={<EPIC />} />
-        <Route path="/visualization" element={<DataVisualization />}/>
+        <Route path="/mars-chart" element={<MarsPhotoChart />} />
       </Routes>
     </AnimatePresence>
   );
