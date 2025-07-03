@@ -3,8 +3,8 @@
 Explore NASA's space APIs: APOD, Mars Rover, and Earth Imagery (EPIC) — powered by React + Express.
 
 ## 🌐 Live Demo
-Frontend: https://nasa-explorer.vercel.app  
-Backend: https://nasa-explorer-api.onrender.com
+Frontend: https://nasa-explorer-git-main-vasundharas-projects-0cb045e4.vercel.app/
+Backend: https://nasa-explorer-012v.onrender.com
 
 ## 🛠️ Stack
 - React + Tailwind CSS
