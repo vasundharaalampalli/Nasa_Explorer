@@ -39,6 +39,9 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             >
               EPIC
             </NavLink>
+            <NavLink to="/mars-chart" className="text-white hover:text-yellow-300 transition duration-200">
+              Mars Chart
+            </NavLink>
           </div>
           <button
             onClick={() => setDarkMode(!darkMode)}
