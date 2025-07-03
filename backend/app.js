@@ -16,18 +16,25 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// CORS configuration
+const cors = require('cors');
+
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://nasa-explorer.vercel.app',
   'https://nasa-explorer-012v.onrender.com',
-  'https://nasa-explorer-n1k5xsqnu-vasundharas-projects-0cb045e4.vercel.app' // Add your exact frontend Vercel URL
+  'https://nasa-explorer-2x30xlyra-vasundharas-projects-0cb045e4.vercel.app' // <== your Vercel frontend
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET'],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed from this origin: ' + origin));
+    }
+  },
+  credentials: true,
 }));
+
 
 // Routes
 app.use('/api/apod', apodRoutes);
