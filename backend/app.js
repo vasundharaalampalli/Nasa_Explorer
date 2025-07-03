@@ -15,9 +15,6 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-
-const cors = require('cors');
-
 const allowedOrigins = [
   'http://localhost:3000',
   'https://nasa-explorer-012v.onrender.com',
